@@ -40,8 +40,8 @@ const scrapeItems = (browser, url) => new Promise(async (resolve, reject) => {
             })
             return items
         })
-        // await page.close()
-        // console.log('>> Tab đã đóng.');
+        await page.close()
+        console.log('>> Tab đã đóng.'); 
         resolve(items)
 
     } catch (error) {
@@ -56,7 +56,7 @@ const scraper = (browser, url) => new Promise(async (resolve, reject) => {
         console.log('>> Đã mở tab mới ...');
         await newPage.goto(url)
         console.log(">> Đã truy cập vào trang " + url)
-        await newPage.waitForSelector('#shopify-section-product-template')
+        await newPage.waitForSelector('#PageContainer')
         console.log('>> Đã load xong tag main ...');
 
         const scrapeData = {}
